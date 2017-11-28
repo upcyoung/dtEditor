@@ -8,7 +8,7 @@
  * https://github.com/upcyoung/dtEditor/blob/master/src/dtEditor.js
  */
 ;
-(function ($, window, document, undefined) {
+(function ($, window) {
 
 
     window.UpcEditorSetting = function (options) {
@@ -189,4 +189,4 @@
         }
     });
 
-})(jQuery, window, document);
+})(jQuery, window);
