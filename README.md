@@ -2,6 +2,51 @@
 
 requires:jquery,jquery databale(https://www.datatables.net/)
 
+
+创建DataTable
+
+```javascript
+
+```
+
+创建dtEditor:
+
+```javascript
+$("table").dtEditor({
+    columns: [
+        {
+            target: 0,
+            noField: true,
+            render: function (cd) {
+                return '';
+            }
+        },
+        {
+            target: 8,
+            render: function (cd) {
+                var $h = $('<input type="text" class="form-control"/>').val(cd);
+                $h.datetimepicker({
+                    autoclose: true,
+                    language: 'zh-CN',
+                    minView: 2,
+                    format: "yyyy-mm-dd"
+                });
+                return $h;
+
+            },
+            get: function ($td) {
+                return $td.find('input').val();
+            },
+            destory: function ($td) {
+                $td.find('input').datetimepicker('remove');
+            }
+        }
+    ],
+    defaultValue: {date:'2017-01-01' }
+});
+```
+
+
 使用如下api进行新增或编辑：
 
 ```javascript
