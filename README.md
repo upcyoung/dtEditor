@@ -57,7 +57,7 @@ $("table").dtEditor({
     defaultValue: {date:'2017-01-01' }
 });
 ```
-或者use 
+或者use UpcEditorSetting
 
 ```javascript UpcEditorSetting
 $("table").dtEditor({
