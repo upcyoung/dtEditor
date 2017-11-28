@@ -3,11 +3,43 @@
  * 
  * @author:upcyoung
  * Licensed MIT © upcyoung
+ * @requires:jquery,jquery datatable
  * 编辑模式：inline,只允许一行在编辑状态
  * https://github.com/upcyoung/dtEditor/blob/master/src/dtEditor.js
  */
 ;
 (function ($, window, document, undefined) {
+
+
+    window.UpcEditorSetting = function (options) {
+        var self = this;
+        self.target = options.target;
+        if (options.noField) {
+            self.noField = true;
+        }
+        self.$dom = null;
+        self.handlers = [];
+        self.render = function () { return ''; };
+        if (!self.noField) {
+            self.get = function () {
+                return $.trim(this.$dom.val());
+            };
+        }
+        if (options.render) {
+            this.render = options.render;
+        }
+        if (options.get) {
+            this.get = options.get;
+        }
+        if (options.destroy) {
+            this.destroy = options.destroy;
+        }
+        if (options.renderAfter) {
+            this.renderAfter = options.renderAfter;
+        }
+        return this;
+    };
+
     //对象缓存
     var allCache = [];
 
@@ -38,8 +70,8 @@
             if (tr.length > 0) {
                 var tds = tr.find("td");
                 for (var i = this.columns.length - 1; i >= 0; i--) {
-                    if (this.columns[i].destory) {
-                        this.columns[i].destory($(tds[this.columns[i].target]));
+                    if (this.columns[i].destroy) {
+                        this.columns[i].destroy($(tds[this.columns[i].target]));
                     }
                 }
                 tr.remove();
@@ -83,14 +115,14 @@
                                 if (!columns[i].noField) {
                                     cd = cell.data();
                                 }
-                                var html = columns[i].render(cd, row.data()); //调用render方法，获取填充td的html
+                                var html = columns[i].render(cd, row.data(),$(tr)); //调用render方法，获取填充td的html
                                 if (typeof html == "string") {
                                     td.innerHTML = html; //填充td，编辑状态
                                 } else {
                                     $(td).empty().append(html); //jquery对象，直接append
                                 }
                                 if (columns[i].renderAfter) { //html渲染完之后，执行回调
-                                    columns[i].renderAfter($(td), cell);
+                                    columns[i].renderAfter(cd,$(td),$(tr));
                                 }
                             }
                             cache.oTrIndex = index; //成功渲染后记录当前行
