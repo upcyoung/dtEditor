@@ -6,7 +6,16 @@ requires:jquery,jquery databale(https://www.datatables.net/)
 创建DataTable
 
 ```javascript
-
+var columns = [
+    {
+        title: '<input type="checkbox"/>',
+        render: function() {
+            return '<input type="checkbox"/>';
+        }
+    },
+    { title: "date", data: "date"}];
+    
+ $('table').DataTable({columns:columns,data:[]})
 ```
 
 创建dtEditor:
