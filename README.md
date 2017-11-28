@@ -24,9 +24,10 @@ var columns = [
 $("table").dtEditor({
     columns: [
         {
-            target: 0,
-            noField: true,
-            render: function (cd) {
+            target: 0, //列
+            noField: true, //no need get the value
+            //编辑状态下,当前列的html
+            render: function (cd) {
                 return '';
             }
         },
@@ -43,10 +44,12 @@ $("table").dtEditor({
                 return $h;
 
             },
-            get: function ($td) {
+            //获取值
+            get: function ($td) {
                 return $td.find('input').val();
             },
-            destory: function ($td) {
+            //保存或取消时调用destory移除event等
+            destory: function ($td) {
                 $td.find('input').datetimepicker('remove');
             }
         }
