@@ -1,3 +1,11 @@
+/*!
+ * dtEditor.js
+ * 
+ * @author:杨林
+ * Licensed MIT © upc_young
+ * 编辑模式：inline,只允许一行在编辑状态
+ * https://github.com/upcyoung/dtEditor/blob/master/src/dtEditor.js
+ */
 ;
 (function ($, window, document, undefined) {
     //对象缓存
