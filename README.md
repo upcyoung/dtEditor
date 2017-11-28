@@ -57,6 +57,37 @@ $("table").dtEditor({
     defaultValue: {date:'2017-01-01' }
 });
 ```
+或者use 
+
+```javascript UpcEditorSetting
+$("table").dtEditor({
+    columns: [
+        new UpcEditorSetting({
+            target: 0,
+            noField: true
+        }),
+        new UpcEditorSetting({
+                target: 8,
+                render: function(cd) {
+                    this.$dom = $('<input type="text" class="form-control"/>').val(cd);
+                    this.$dom.datetimepicker({
+                        autoclose: true,
+                        language: 'zh-CN',
+                        minView: 2,
+                        format: "yyyy-mm-dd"
+                    });
+                    return this.$dom;
+
+                },
+                destroy: function($td) {
+                    this.$dom.datetimepicker('remove');
+                }
+            })
+        ],
+    defaultValue: {date:'2017-01-01' }
+})
+```
+
 
 
 使用如下api进行新增或编辑：
