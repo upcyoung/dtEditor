@@ -1,8 +1,8 @@
 /*!
  * dtEditor.js
  * 
- * @author:杨林
- * Licensed MIT © upc_young
+ * @author:upcyoung
+ * Licensed MIT © upcyoung
  * 编辑模式：inline,只允许一行在编辑状态
  * https://github.com/upcyoung/dtEditor/blob/master/src/dtEditor.js
  */
