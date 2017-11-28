@@ -32,7 +32,7 @@ $("table").dtEditor({
             }
         },
         {
-            target: 8,
+            target: 1,
             render: function (cd) {
                 var $h = $('<input type="text" class="form-control"/>').val(cd);
                 $h.datetimepicker({
@@ -67,7 +67,7 @@ $("table").dtEditor({
             noField: true
         }),
         new UpcEditorSetting({
-                target: 8,
+                target: 1,
                 render: function(cd) {
                     this.$dom = $('<input type="text" class="form-control"/>').val(cd);
                     this.$dom.datetimepicker({
